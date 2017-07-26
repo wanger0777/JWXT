@@ -12,4 +12,5 @@ return array(
     'DB_PWD'                =>  'wangpengwei1314',          // 密码
     'DB_PORT'               =>  '',        // 端口
     'DB_PREFIX'             =>  'jw_',    // 数据库表前缀
+    'URL_CASE_INSENSITIVE' =>true,  //url地址不区分大小写
 );

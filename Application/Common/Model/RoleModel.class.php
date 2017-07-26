@@ -9,7 +9,7 @@ namespace Common\Model;
 use Think\Model;
 class RoleModel extends Model
 {
-    private $errorInfo;
+    public $errorInfo;
     public function addRole($data)
     {
         if(!isset($data['role_name']) || mb_strlen($data['role_name'])<2 || mb_strlen($data['role_name'])>6 )

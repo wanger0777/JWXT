@@ -24,6 +24,7 @@ class AccessController extends Controller
         $page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% 第 '.I('p',1).' 页/共 %TOTAL_PAGE% 页 ( '.$pagecount.' 条/页 共 %TOTAL_ROW% 条)');
         $show = $page->show();
         $list = $db->where($where)->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('num',$count);
         $this->assign('list',$list);
         $this->assign('page',$show);
         $this->display();
@@ -37,9 +38,9 @@ class AccessController extends Controller
             $db = D('role');
             if($id = $db->addRole($data))
             {
-                $this->ajaxReturn(['status'=>1,'info'=>'成功','data'=>$id]);
+                $this->ajaxReturn(['status'=>1,'info'=>'添加成功','data'=>$id]);
             }else{
-                $this->ajaxReturn(['status'=>0,'info'=>'失败','data'=>0]);
+                $this->ajaxReturn(['status'=>0,'info'=>$db->errorInfo,'data'=>0]);
             }
         }
         if(IS_GET)
