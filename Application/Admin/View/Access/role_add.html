@@ -1,0 +1,60 @@
+﻿<include file="Common/common"/>
+<body>
+<article class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form-admin-role-add">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名称：</label>
+			<div class="formControls col-xs-8 col-sm-6">
+				<input type="text" class="input-text" value="" placeholder="" id="roleName" name="roleName">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>学校名称：</label>
+			<div class="formControls col-xs-8 col-sm-6">
+				<input type="text" class="input-text" value="" placeholder="" id="roleSchool" name="roleSchool">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">备注：</label>
+			<div class="formControls col-xs-8 col-sm-6">
+				<textarea name="remark" id="remark" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符" ></textarea>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<button type="button" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+			</div>
+		</div>
+	</form>
+</article>
+
+
+<!--请在下方写此页面业务相关的脚本-->
+<!--<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>-->
+<script type="text/javascript">
+	$(function () {
+	    $('#admin-role-save').click(function () {
+            var role_name = $('#roleName').val();
+            var role_school = $('#roleSchool').val();
+            var role_remark = $('#remark').val();
+            layer.load();
+	        $.post('',{role_name:role_name,role_remark:role_remark,role_school:role_school},function (data) {
+				layer.closeAll('loading');
+				if(data)
+				{
+				    window.parent.location.reload();
+				}else{
+				    layer.msg('date.info',{icon:5});
+				}
+            });
+
+        });
+
+    });
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
